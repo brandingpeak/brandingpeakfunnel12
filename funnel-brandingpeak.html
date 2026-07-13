@@ -1276,20 +1276,26 @@
   }
 
   function submit() {
-    if (!validate(8)) return;
+    if (!validate(10)) return;
     data.ts = new Date().toISOString();
     save();
     sendToSheets(data);
     fbq('track', 'Lead', { value: data.income, currency: 'USD' });
     hide('form-card');
-    show('screen-qualified');
+    formSubmittedBeforeVideoEnd = true;
 
-    // Transiciona a Calendly después de 2 segundos
-    setTimeout(() => {
-      hide('screen-qualified');
-      show('screen-cal');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 2000);
+    // Esperar a que video termine o pasar 2 segundos
+    if (videoEnded) {
+      show('screen-qualified');
+      setTimeout(() => {
+        hide('screen-qualified');
+        show('screen-cal');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 2000);
+    } else {
+      // Video aún no termina, esperar a que termine
+      show('screen-loading');
+    }
 
     // Escucha evento de Calendly cuando agenda
     window.addEventListener('message', (e) => {

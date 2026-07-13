@@ -818,11 +818,6 @@
         <button class="btn-back" onclick="prev(10)">← Atrás</button>
       </div>
 
-      <!-- 10alt › Sin agencia (submit directo) -->
-      <div class="step" data-s="10" id="step-10-direct">
-        <button class="btn-next" onclick="submit()" style="opacity:0; pointer-events:none;"></button>
-      </div>
-
     </div><!-- /steps-wrap -->
 
     <!-- PROGRESS BAR (bottom) -->
@@ -1193,25 +1188,18 @@
     if (!validate(n)) return;
     // QUALIFICATION
     if (n === 4 && data.income === 'less3k') { showDisq(); return; }
-    // CONDITIONAL PASO 9 → 10
+    // CONDITIONAL PASO 9 → 10 or SUBMIT
     if (n === 9) {
-      document.getElementById('step-10-conditional').style.display = 'none';
-      document.getElementById('step-10-direct').style.display = 'none';
       if (data.agencia === 'si') {
-        document.getElementById('step-10-conditional').style.display = 'block';
+        goTo(10);
       } else {
-        document.getElementById('step-10-direct').style.display = 'block';
+        submit();
       }
-      goTo(10);
       return;
     }
-    // PASO 10
+    // PASO 10 → SUBMIT
     if (n === 10) {
-      if (data.agencia === 'no') {
-        submit();
-      } else {
-        submit();
-      }
+      submit();
       return;
     }
     if (n < TOTAL) goTo(n + 1);

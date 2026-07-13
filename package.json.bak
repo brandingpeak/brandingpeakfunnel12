@@ -1,0 +1,9 @@
+{
+  "name": "branding-peak-funnel",
+  "version": "1.0.0",
+  "description": "Sales funnel CRM for Branding Peak",
+  "dependencies": {
+    "google-auth-library": "^8.8.0",
+    "googleapis": "^118.0.0"
+  }
+}

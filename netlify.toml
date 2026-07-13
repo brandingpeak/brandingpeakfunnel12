@@ -1,0 +1,12 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+  command = ""
+
+[[redirects]]
+  from = "/*"
+  to = "/funnel-brandingpeak.html"
+  status = 200
+
+[env]
+  GOOGLE_CREDENTIALS = "{\"type\":\"service_account\",\"project_id\":\"branding-peak-crm\",\"private_key_id\":\"123abc\",\"private_key\":\"-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAAOCAQ8AMIIEvAIBADANBgkqhkiG9w0B\n-----END PRIVATE KEY-----\n\"}"

@@ -1,0 +1,12 @@
+[build]
+  command = ""
+  functions = "netlify/functions"
+  publish = "."
+
+[dev]
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/*"
+  to = "/funnel-brandingpeak.html"
+  status = 200
